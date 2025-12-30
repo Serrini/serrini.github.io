@@ -1,7 +1,10 @@
 baseURL = "https://serrini.github.io/"
 languageCode = "zh-cn"
 title = "Serrini's Blog"
-theme = "PaperMod"
+theme = "hugo-theme-stack"
+
+DefaultContentLanguage = "zh-cn"
+hasCJKLanguage = true
 
 [pagination]
   pagerSize = 10
@@ -12,121 +15,96 @@ buildFuture = false
 buildExpired = false
 enableEmoji = true
 
-[minify]
-  disableXML = true
-  minifyOutput = true
-
 [params]
-  env = "production"
-  title = "Serrini's Blog"
-  description = "Every failure is leading towards success."
-  keywords = ["Blog", "Tech", "Golang", "LeetCode"]
-  author = "Serrini"
-  DateFormat = "2006-01-02"
-  defaultTheme = "auto"
-  disableThemeToggle = false
-  ShowReadingTime = true
-  ShowShareButtons = false
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowWordCount = true
-  ShowRssButtonInSectionTermList = true
-  UseHugoToc = true
-  disableSpecial1stPost = false
-  disableScrollToTop = false
-  hidemeta = false
-  hideSummary = false
-  showtoc = true
-  tocopen = false
+  mainSections = ["posts"]
+  featuredImageField = "image"
+  rssFullContent = true
 
-  [params.assets]
-    disableHLJS = true
+  [params.footer]
+    since = 2020
 
-  [params.label]
-    text = "Serrini's Blog"
-    icon = "/apple-touch-icon.png"
-    iconHeight = 35
+  [params.dateFormat]
+    published = "2006-01-02"
+    lastUpdated = "2006-01-02 15:04"
 
-  [params.profileMode]
-    enabled = true
-    title = "Serrini"
+  [params.sidebar]
+    emoji = ""
     subtitle = "Goals determine what you going to be!"
-    imageUrl = "/images/avatar.jpg"
-    imageWidth = 120
-    imageHeight = 120
-    imageTitle = "avatar"
-    [[params.profileMode.buttons]]
-      name = "Archives"
-      url = "archives"
-    [[params.profileMode.buttons]]
-      name = "Tags"
-      url = "tags"
+    [params.sidebar.avatar]
+      enabled = true
+      local = true
+      src = "images/avatar.jpg"
 
-  [params.homeInfoParams]
-    Title = "Welcome"
-    Content = "Every failure is leading towards success."
+  [params.article]
+    math = false
+    toc = true
+    readingTime = true
+    [params.article.license]
+      enabled = false
 
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/serrini"
+  [params.comments]
+    enabled = false
 
-  [[params.socialIcons]]
-    name = "twitter"
-    url = "https://twitter.com/sunlan"
+  [params.widgets]
+    [[params.widgets.homepage]]
+      type = "search"
+    [[params.widgets.homepage]]
+      type = "archives"
+      [params.widgets.homepage.params]
+        limit = 5
+    [[params.widgets.homepage]]
+      type = "categories"
+      [params.widgets.homepage.params]
+        limit = 10
+    [[params.widgets.homepage]]
+      type = "tag-cloud"
+      [params.widgets.homepage.params]
+        limit = 20
+    [[params.widgets.page]]
+      type = "toc"
 
-[params.cover]
-  hidden = true
-  hiddenInList = true
-  hiddenInSingle = true
+  [params.colorScheme]
+    toggle = true
+    default = "auto"
 
-[params.fuseOpts]
-  isCaseSensitive = false
-  shouldSort = true
-  location = 0
-  distance = 1000
-  threshold = 0.4
-  minMatchCharLength = 0
-  keys = ["title", "permalink", "summary", "content"]
+  [params.imageProcessing]
+    [params.imageProcessing.cover]
+      enabled = true
+    [params.imageProcessing.content]
+      enabled = true
 
 [menu]
-  [[menu.main]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
-    weight = 1
-  [[menu.main]]
-    identifier = "archives"
-    name = "Archives"
-    url = "/archives/"
-    weight = 5
-  [[menu.main]]
-    identifier = "tags"
-    name = "Tags"
-    url = "/tags/"
-    weight = 10
-  [[menu.main]]
-    identifier = "categories"
-    name = "Categories"
-    url = "/categories/"
-    weight = 15
-  [[menu.main]]
-    identifier = "search"
-    name = "Search"
-    url = "/search/"
-    weight = 20
+  [[menu.social]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/serrini"
+    [menu.social.params]
+      icon = "brand-github"
 
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+[related]
+  includeNewer = true
+  threshold = 60
+  toLower = false
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+  [[related.indices]]
+    name = "categories"
+    weight = 200
 
 [markup]
-  [markup.highlight]
-    anchorLineNos = false
-    codeFences = true
-    guessSyntax = true
-    lineNos = true
-    noClasses = false
-    style = "dracula"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = true
+    startLevel = 2
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    tabWidth = 4
