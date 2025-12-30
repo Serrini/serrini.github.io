@@ -2,7 +2,9 @@ baseURL = "https://serrini.github.io/"
 languageCode = "zh-cn"
 title = "Serrini's Blog"
 theme = "PaperMod"
-paginate = 10
+
+[pagination]
+  pagerSize = 10
 
 enableRobotsTXT = true
 buildDrafts = false
