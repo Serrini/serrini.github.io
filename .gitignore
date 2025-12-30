@@ -1,0 +1,19 @@
+# Hugo build output
+/public/
+/resources/_gen/
+
+# Migration script
+migrate.py
+
+# Editor files
+.idea/
+*.swp
+*.swo
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Hugo modules
+hugo.lock
