@@ -1,0 +1,120 @@
+/* 增加内容区域宽度 */
+:root {
+    --main-width: 900px;
+    --nav-width: 1200px;
+}
+
+/* 代码块优化 - 更大的宽度，更好的显示 */
+.post-content pre code {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* 大屏幕下的左侧固定 TOC */
+@media (min-width: 1400px) {
+    :root {
+        --main-width: 900px;
+    }
+
+    .post-content {
+        position: relative;
+    }
+
+    /* TOC 固定在左侧 */
+    .toc {
+        position: fixed;
+        top: 100px;
+        left: max(20px, calc((100vw - var(--main-width)) / 2 - 280px));
+        width: 250px;
+        max-height: calc(100vh - 150px);
+        overflow-y: auto;
+        border: 1px solid var(--border);
+        background: var(--code-bg);
+        border-radius: var(--radius);
+        padding: 10px;
+        font-size: 14px;
+        z-index: 100;
+    }
+
+    [data-theme="dark"] .toc {
+        background: var(--entry);
+    }
+
+    .toc details {
+        display: block;
+    }
+
+    .toc details[open] summary {
+        margin-bottom: 10px;
+    }
+
+    .toc .inner {
+        margin: 0;
+        padding: 0;
+    }
+
+    .toc ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .toc li {
+        margin: 8px 0;
+        line-height: 1.4;
+    }
+
+    .toc li ul {
+        padding-left: 15px;
+        margin-top: 5px;
+    }
+
+    .toc a {
+        color: var(--secondary);
+        text-decoration: none;
+        display: block;
+        padding: 2px 0;
+        transition: color 0.2s;
+    }
+
+    .toc a:hover {
+        color: var(--primary);
+        box-shadow: none;
+    }
+
+    /* 滚动条美化 */
+    .toc::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .toc::-webkit-scrollbar-thumb {
+        background: var(--tertiary);
+        border-radius: 2px;
+    }
+}
+
+/* 中等屏幕保持 TOC 在顶部但默认展开 */
+@media (min-width: 768px) and (max-width: 1399px) {
+    :root {
+        --main-width: 850px;
+    }
+
+    .toc details[open] {
+        display: block;
+    }
+}
+
+/* 代码块不换行，允许横向滚动但更宽 */
+.post-content .highlight {
+    max-width: 100%;
+}
+
+.post-content pre {
+    max-width: 100%;
+}
+
+/* 表格优化 */
+.post-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
