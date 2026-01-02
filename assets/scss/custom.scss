@@ -1,0 +1,30 @@
+/* 调整布局宽度：缩小侧边栏，加宽正文区域 */
+
+.container {
+    &.extended {
+        @media (min-width: 768px) {
+            --left-sidebar-max-width: 18%;
+            --right-sidebar-max-width: 22%;
+        }
+
+        @media (min-width: 1024px) {
+            --left-sidebar-max-width: 15%;
+            --right-sidebar-max-width: 18%;
+        }
+
+        @media (min-width: 1280px) {
+            --left-sidebar-max-width: 12%;
+            --right-sidebar-max-width: 15%;
+        }
+    }
+
+    &.compact {
+        @media (min-width: 768px) {
+            --left-sidebar-max-width: 18%;
+        }
+
+        @media (min-width: 1024px) {
+            --left-sidebar-max-width: 15%;
+        }
+    }
+}
