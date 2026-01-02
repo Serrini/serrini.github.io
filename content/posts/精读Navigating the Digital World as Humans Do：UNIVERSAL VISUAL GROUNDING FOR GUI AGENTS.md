@@ -1,5 +1,5 @@
 ---
-title: 精读论文
+title: 精读Navigating the Digital World as Humans Do：UNIVERSAL VISUAL GROUNDING FOR GUI AGENTS
 date: 2026-01-02
 author: serrini
 showToc: true
