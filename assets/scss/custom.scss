@@ -1,39 +1,30 @@
-/* 调整布局宽度：扩大容器，减少两侧留白 */
+/* 调整布局宽度：缩小左侧栏，加宽正文区域 */
 
 .container {
     &.extended {
         @media (min-width: 768px) {
-            max-width: 1200px;
             --left-sidebar-max-width: 18%;
             --right-sidebar-max-width: 28%;
         }
 
         @media (min-width: 1024px) {
-            max-width: 1440px;
             --left-sidebar-max-width: 15%;
             --right-sidebar-max-width: 25%;
         }
 
         @media (min-width: 1280px) {
-            max-width: 1700px;
             --left-sidebar-max-width: 12%;
-            --right-sidebar-max-width: 20%;
+            --right-sidebar-max-width: 22%;
         }
     }
 
     &.compact {
         @media (min-width: 768px) {
-            max-width: 900px;
             --left-sidebar-max-width: 18%;
         }
 
         @media (min-width: 1024px) {
-            max-width: 1200px;
             --left-sidebar-max-width: 15%;
-        }
-
-        @media (min-width: 1280px) {
-            max-width: 1440px;
         }
     }
 }
