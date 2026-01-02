@@ -103,7 +103,8 @@ categories: 论文
 #### 总结一下：
 一个总计10M（1000万）个UI元素的数据集，其中90%来自混合合成管道。同一屏幕截图上的元素被批量处理以加速训练。
 ![](https://serrinibucket.oss-cn-hangzhou.aliyuncs.com/%E6%88%AA%E5%B1%8F2026-01-02%2014.39.01.png)
-### **3. Model design
+
+### Model design
 1. 翻译：
 	1. 采用开源模型架构：[[7B LLaVA-NeXT]]：视觉编码器+轻量投影+7B语言模型
 	2. 输入输出公式：
@@ -136,7 +137,8 @@ categories: 论文
 	3. 实时环境中的在线代理评估。
 		1. 评估端到端的成功率，更真实
 3. 分两步，先看UGround的定位是否准，再看集成到他们的完整代理框架SeeAct-V后，端到端代理能否完成任务。
-### **3.1 GUI VISUAL GROUNDING**
+
+### GUI VISUAL GROUNDING
 
 1. **ScreenSpot基准**上评估UGround。这个基准测试专门为visual grounding on GUIs设计的。
 	1. 1272个单步指令和目标元素的边界框（跨平台的）。
@@ -154,7 +156,7 @@ categories: 论文
 	1. 在ScreenSpot基准上，UGround表现很好。两种settings都提升很多。尽管从未在桌面UI上训练，但在桌面UI上表现突出。在图标和小部件上表现尤其出色。
 		![](https://serrinibucket.oss-cn-hangzhou.aliyuncs.com/%E6%88%AA%E5%B1%8F2026-01-02%2014.40.05.png)
 
-### **3.2 OFFLINE AGENT EVALUATION**
+### OFFLINE AGENT EVALUATION
 
 1. 总体思路：用事先缓存好的环境状态和金标准轨迹来评测代理。
 2. 分Web/Mobile/Desktop。
@@ -200,7 +202,7 @@ categories: 论文
 			2. 证明了仅凭视觉输入可以处理复杂桌面应用
 			3. ![](https://serrinibucket.oss-cn-hangzhou.aliyuncs.com/%E6%88%AA%E5%B1%8F2026-01-02%2014.41.17.png)
 
-### **3.3 ONLINE AGENT EVALUATION**
+### ONLINE AGENT EVALUATION
 
 1. 在真实环境中评估，成本较高，只使用UGround作为grouding模块。
 2. Web：Mind2Web-Live
@@ -227,7 +229,7 @@ categories: 论文
 		2. 尽管AndroidUI通常更适合SoM方法，但视觉输入仍表现出色
 		3. ![](https://serrinibucket.oss-cn-hangzhou.aliyuncs.com/%E6%88%AA%E5%B1%8F2026-01-02%2014.41.37.png)
 
-### **3.4 ERROR ANALYSIS**
+### ERROR ANALYSIS
 
 1. 对失败案例分析，结论是规划错误是主要的失败原因（60%-70%），并不是grounding错误，表示UGround的grounding能力很强。
 
@@ -262,7 +264,7 @@ categories: 论文
 				1. SeeAct-V在Multimodal-Mind2Web、AndroidControl、OmniACT上均优于依赖文本输入的SOTA方法。
 			2. **在线评估**（Mind2Web-Live/AndroidWorld）：
 				1. 任务成功率与基线相当或更高，证明视觉代理的实用性。
-### **局限**  
+### 局限
 1. **数据效率问题**
     
     - 训练数据基于网页合成，存在**元素重复率高**的问题（如常见按钮/链接）。未来可通过数据去重和分组提升训练效率。
