@@ -23,8 +23,11 @@ categories: agent
 3. 2020s后，由于MLLMs的发展，给GUI agent带来了革命性的进展。
 
 paper list：
+	
 	https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List/
+	
 	https://github.com/showlab/Awesome-GUI-Agent
+	
 	https://github.com/slavakurilyak/awesome-ai-agents
 
 ## 通用LVLMs与专用于GUI agent的LVLMs
