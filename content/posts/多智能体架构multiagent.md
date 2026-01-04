@@ -33,7 +33,7 @@ categories: agent
 ### Google ADK框架：
 #### 层级代理
 ![Pasted image 20260104151423](https://serrinibucket.oss-cn-hangzhou.aliyuncs.com/Pasted%20image%2020260104151423.png)
-![[Pasted image 20260104151522.png]]
+![Pasted image 20260104151522](https://serrinibucket.oss-cn-hangzhou.aliyuncs.com/Pasted%20image%2020260104151522.png)
 #### LoopAgent（迭代模式）
 ![Pasted image 20260104151514](https://serrinibucket.oss-cn-hangzhou.aliyuncs.com/Pasted%20image%2020260104151514.png)
 ![Pasted image 20260104151529](https://serrinibucket.oss-cn-hangzhou.aliyuncs.com/Pasted%20image%2020260104151529.png)
