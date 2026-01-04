@@ -10,9 +10,13 @@ tags:
 categories: 论文
 ---
 背景：现有GUI agent都是通过提取的结构化数据（html等）与环境交互。
+
 研究方法：纯视觉方案（仅依赖截图）的SeekClick。
+
 关键挑战：GUI grounding（接地）：**根据指令准确定位屏幕元素的能力。**
+
 提出：通过基础预训练来增强SeeClick，并设计一种自动化图形界面用户基础数据管理的方法。创建跨平台，首创的，真实的，GUI grouding benchmark。
+
 结论：通过预训练后，SeekClick在不同基线上展示了ScreenSpot的显著改进。
 
 ## Introduction
