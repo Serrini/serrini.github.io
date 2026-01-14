@@ -1,5 +1,5 @@
 ---
-title: GUI Agent
+title: GUI Agent相关
 date: 2025-06-02
 author: serrini
 showToc: true
