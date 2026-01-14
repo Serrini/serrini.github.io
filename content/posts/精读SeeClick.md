@@ -1,5 +1,5 @@
 ---
-title: 精读SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents
+title: 精读SeeClick：Harnessing GUI Grounding for Advanced Visual GUI Agents
 date: 2026-01-02
 author: serrini
 showToc: true
