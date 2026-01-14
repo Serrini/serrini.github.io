@@ -10,14 +10,14 @@ tags:
 categories: agent
 ---
 
-# 同步阻塞式流式响应
+## 同步阻塞式流式响应
 
 Web框架使用Flask，在run_stream()函数中手写for循环驱动agent，等待LLM返回token，拿到token即yield，发给前端。
 业务逻辑严格依赖既定的pipeline顺序，不涉及高并发，不需要复杂的并行agent执行。
 
-## 使用 **Server-Sent Events (SSE)** 实现的流式 API 接口
+### 使用 **Server-Sent Events (SSE)** 实现的流式 API 接口
 
-### SSE通信机制
+#### SSE通信机制
 
 一种服务器向客户端**单向**推送实时数据的技术，WebSocket是双向的。
 
@@ -26,7 +26,7 @@ Web框架使用Flask，在run_stream()函数中手写for循环驱动agent，等�
 客户端 <---(持续推送数据)-- 服务器
 ````
 
-### SSE数据格式
+#### SSE数据格式
 
 ```python
 # 注意必须是两个换行符
@@ -37,7 +37,7 @@ data: {"type": "agent_output_chunk", "content": "正在分析..."}\n\n
 data: {"type": "done"}\n\n
 ```
 
-### API端分析
+#### API端分析
 
 ```python
 @api_bp.route('/agent/research/stream', methods=['POST'])
@@ -77,7 +77,7 @@ def multi_agent_research_stream():
 ```
 
 
-## Multi-Agent执行流程
+### Multi-Agent执行流程
 
 pipeline模式，定义好了agent执行顺序。
 
@@ -125,7 +125,7 @@ def run_stream(self, user_input: str):
 ```
 
 
-### 子agent服务端实现
+#### 子agent服务端实现
 
 ```python
 # 发送事件，表示agent开始输出
@@ -149,7 +149,7 @@ yield {
 }
 ```
 
-## pipeline设计模式的通信流程
+### pipeline设计模式的通信流程
 
 ```python
   第1层：前端 → Flask（HTTP）
@@ -187,18 +187,18 @@ yield {
 ```
   
 
-# 异步高并发
+## 异步高并发
 
 想要实现真正的异步高并发Multi-Agent架构，supervisor节点可以动态路由，worker节点可以并行执行，支持自动合并多个worker的处理结果。
 可以充分利用LangGraph的能力（Send、Annotated、astream_events），或者把 LangGraph 当成状态容器然后自己写调度逻辑。
 
-## LangGraph内置能力
+### LangGraph内置能力
 
-### 图拓扑管理
+#### 图拓扑管理
 
 每一条边自定义任务逻辑，通过Send API，根据Supervisor的决策，动态生成需要执行的节点。
 
-### 状态管理
+#### 状态管理
 
 Supervisor和所有的Worker节点通过共享的状态字典State交换数据；在LangGraph中，可以通过 `TypedDict` 和 Python 的 `operator.add`，用自动合并函数处理多个Worker的并行结果。
 
@@ -210,7 +210,7 @@ class ResearchState(TypedDict):
 builder.set_state(ResearchState) # 定义共享状态
 ```
 
-### 利用Send API自动实现并行任务调度
+#### 利用Send API自动实现并行任务调度
 
 
 
@@ -274,7 +274,7 @@ def parallel_router(state: PaperReaderState) -> List[Send] | Literal["finalize"]
   return routes
 ```
 
-### LangGraph原生 astream_events 实现动态路由和Token级流式
+#### LangGraph原生 astream_events 实现动态路由和Token级流式
 
 一般这样拿到结果```result = await graph.ainvoke(state)```
 
@@ -284,9 +284,9 @@ astream_events可以获取每个token、每个节点的变化
 处理三类事件：节点开始、Token流、节点结束，然后yield各种类型的输出。
 
 
-## 核心步骤
+### 核心步骤
 
-### 创建共享状态 state.py
+#### 创建共享状态 state.py
 
 Annotated写法对三个字段messages、messages、completed_agents的类型提示。
 Annotated允许在不改变变量类型的前提下，给这个类型贴上标签或附加元数据，T是原本的类型，x可以是字符串、函数、类的实例等。对于Langraph框架，会检查第二个参数operator.add，做自己的更新处理。
@@ -306,7 +306,7 @@ class PaperReaderState(TypedDict, total=False):
 	completed_agents: Annotated[List[str], operator.add]
 ```
 
-### 创建Woker
+#### 创建Woker
 
 每一个worker都是一个异步函数，返回状态更新：
 
@@ -335,7 +335,7 @@ async def analyzer_node(state: PaperReaderState, config: RunnableConfig = None) 
       }
 ```
 
-### 创建Supervisor，实现动态路由
+#### 创建Supervisor，实现动态路由
 
 指定supervisor_node输出两个字段，next_steps和iteration。
 用pydantic.BaseModel，定义输出格式是RouteDecision。
@@ -373,7 +373,7 @@ async def supervisor_node(state: PaperReaderState) -> Dict[str, Any]:
   }
 ```
 
-### 构建图 graph.py
+#### 构建图 graph.py
 
 ```python
 from langgraph.graph import StateGraph, END
@@ -428,7 +428,7 @@ def build_graph():
 
 ```
 
-### 流式输出处理
+#### 流式输出处理
 
 ```python
 async def stream_graph_events(graph, input_state, config) -> AsyncGenerator:
@@ -448,7 +448,7 @@ async def stream_graph_events(graph, input_state, config) -> AsyncGenerator:
 		  yield {"type": "agent_end", "agent": node_name}
 ```
 
-### 主执行器封装
+#### 主执行器封装
 
 ```python
 class PaperReaderMultiAgent:
@@ -465,7 +465,7 @@ class PaperReaderMultiAgent:
 ```
 
 
-## 核心API设计
+### 核心API设计
 
 整个后端的核心链路：FastAPI 路由 → SSE 响应 → 异步迭代 Multi-Agent → 流式输出事件。
 
