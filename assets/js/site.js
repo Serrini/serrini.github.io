@@ -51,30 +51,66 @@
         const form = terminal.querySelector("[data-terminal-form]");
         const input = terminal.querySelector("[data-terminal-input]");
         const output = terminal.querySelector("[data-terminal-output]");
-        const commands = {
-            help: "Commands: <strong>projects</strong> · <strong>research</strong> · <strong>writing</strong> · <strong>lab</strong> · <strong>now</strong> · <strong>whoami</strong> · <strong>clear</strong>",
-            projects: 'Selected systems → <a href="/projects/">open ~/projects ↗</a>',
-            research: 'Connected topics → <a href="/research/">open ~/research ↗</a>',
-            writing: 'Engineering notes → <a href="/posts/">open ~/writing ↗</a>',
-            notes: 'Engineering notes → <a href="/posts/">open ~/writing ↗</a>',
-            lab: 'Interactive experiments → <a href="/lab/">open ~/lab ↗</a>',
-            now: 'Currently building LLM × EDA workflows → <a href="/now/">open ~/now ↗</a>',
-            about: 'About this system → <a href="/about/">open ~/about ↗</a>',
-            whoami: 'Serrini — AI Engineer connecting models, agents and systems. <a href="/about/">more ↗</a>',
-            pwd: "/home/serrini/research-os",
-            ls: "about/ &nbsp; research/ &nbsp; projects/ &nbsp; writing/ &nbsp; lab/ &nbsp; now/"
+        const pages = {
+            projects: { url: "/projects/", label: "项目", description: "查看完整项目、架构和技术栈" },
+            research: { url: "/research/", label: "研究", description: "打开交互式研究知识图谱" },
+            writing: { url: "/posts/", label: "文章", description: "浏览技术文章与工程笔记" },
+            lab: { url: "/lab/", label: "实验室", description: "运行 Attention 等交互实验" },
+            now: { url: "/now/", label: "近况", description: "查看目前正在研究和构建的内容" },
+            about: { url: "/about/", label: "关于", description: "了解 Serrini 与这套 Research OS" }
+        };
+
+        const aliases = {
+            project: "projects", 项目: "projects", 项目集: "projects",
+            研究: "research", 研究方向: "research", 图谱: "research",
+            posts: "writing", notes: "writing", blog: "writing", 文章: "writing", 博客: "writing", 笔记: "writing",
+            实验: "lab", 实验室: "lab", 游乐场: "lab",
+            current: "now", 现在: "now", 近况: "now", 当前: "now",
+            intro: "about", 介绍: "about", 关于: "about",
+            "我是谁": "whoami", 身份: "whoami",
+            帮助: "help", 命令: "help", 命令列表: "help",
+            清屏: "clear", 清除: "clear", 目录: "ls"
+        };
+
+        const responses = {
+            help: '<span>帮助</span> 页面命令：<strong>projects</strong>、<strong>research</strong>、<strong>writing</strong>、<strong>lab</strong>、<strong>now</strong>、<strong>about</strong>。系统命令：<strong>whoami</strong>、<strong>ls</strong>、<strong>pwd</strong>、<strong>clear</strong>。可用 <strong>open ~/lab</strong> 或“打开实验室”直接跳转。',
+            whoami: '<span>身份</span> Serrini，连接模型、Agent 与系统工程的 AI Engineer。<a href="/about/">查看介绍 ↗</a>',
+            pwd: '<span>路径</span> /home/serrini/research-os',
+            ls: '<span>目录</span> about/ &nbsp; research/ &nbsp; projects/ &nbsp; writing/ &nbsp; lab/ &nbsp; now/'
+        };
+
+        const parse = (raw) => {
+            let value = raw
+                .replace(/[\u00a0\u2007\u202f]/g, " ")
+                .trim()
+                .toLowerCase()
+                .replace(/^[>$]\s*/, "")
+                .replace(/\s+/g, " ");
+            let shouldOpen = false;
+            const action = value.match(/^(open|cd|go|打开|进入|前往)\s*/);
+            if (action) {
+                shouldOpen = true;
+                value = value.slice(action[0].length);
+            }
+            value = value.replace(/\\/g, "").replace(/／/g, "/");
+            value = value.replace(/^~?\//, "").replace(/\/+$/, "").trim();
+            return { command: aliases[value] || value, shouldOpen };
         };
 
         const run = (raw) => {
-            const command = raw.trim().toLowerCase().replace(/^~\//, "");
+            const { command, shouldOpen } = parse(raw);
             if (!command) return;
             if (command === "clear") {
                 output.textContent = "";
-            } else if (commands[command]) {
-                output.innerHTML = commands[command];
+            } else if (pages[command]) {
+                const page = pages[command];
+                output.innerHTML = `<span>${page.label}</span> ${page.description}。<a href="${page.url}">打开 ~/${command} ↗</a>`;
+                if (shouldOpen) window.location.assign(page.url);
+            } else if (responses[command]) {
+                output.innerHTML = responses[command];
             } else {
                 const safeCommand = command.replace(/[<>&"']/g, "");
-                output.innerHTML = `command not found: <strong>${safeCommand}</strong>. Try <strong>help</strong>.`;
+                output.innerHTML = `<span>未找到命令</span> <strong>${safeCommand}</strong>。输入 <strong>help</strong> 或“帮助”查看全部命令。`;
             }
             input.value = "";
         };

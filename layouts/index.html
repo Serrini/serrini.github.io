@@ -35,20 +35,26 @@
         </div>
 
         <div class="os-terminal reveal-item" data-terminal>
-            <div class="os-terminal__bar"><span></span><span></span><span></span><b>serrini@research-os</b></div>
+            <div class="os-terminal__bar"><span></span><span></span><span></span><b>COMMAND CENTER / serrini@research-os</b><em>ONLINE</em></div>
             <div class="os-terminal__body">
-                <div class="os-terminal__output" data-terminal-output aria-live="polite">Type <strong>help</strong> to explore, or use a shortcut.</div>
+                <div class="os-terminal__intro">
+                    <div><span>用命令探索本站</span><small>支持直接命令、<code>open ~/路径</code> 和中文</small></div>
+                    <button type="button" data-command="help">查看帮助</button>
+                </div>
+                <div class="os-terminal__shortcuts" aria-label="可执行命令">
+                    <button type="button" data-command="projects"><code>projects</code><span>项目</span></button>
+                    <button type="button" data-command="research"><code>research</code><span>研究</span></button>
+                    <button type="button" data-command="writing"><code>writing</code><span>文章</span></button>
+                    <button type="button" data-command="lab"><code>lab</code><span>实验室</span></button>
+                    <button type="button" data-command="now"><code>now</code><span>近况</span></button>
+                    <button type="button" data-command="about"><code>about</code><span>关于</span></button>
+                </div>
+                <div class="os-terminal__output" data-terminal-output aria-live="polite"><span>提示</span> 试试输入 <strong>open ~/lab</strong>，可直接进入实验室。</div>
                 <form class="os-terminal__form" data-terminal-form autocomplete="off">
                     <label for="os-command">serrini@research-os:~$</label>
-                    <input id="os-command" data-terminal-input type="text" inputmode="text" spellcheck="false" aria-label="输入导航命令" placeholder="help" />
+                    <input id="os-command" data-terminal-input type="text" inputmode="text" spellcheck="false" aria-label="输入导航命令" placeholder="例如：open ~/lab、项目、help" />
                     <button type="submit" aria-label="运行命令">↵</button>
                 </form>
-                <div class="os-terminal__shortcuts" aria-label="命令快捷方式">
-                    <button type="button" data-command="projects">projects</button>
-                    <button type="button" data-command="research">research</button>
-                    <button type="button" data-command="writing">writing</button>
-                    <button type="button" data-command="now">now</button>
-                </div>
             </div>
         </div>
     </section>
