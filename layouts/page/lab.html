@@ -1,0 +1,42 @@
+{{ define "body-class" }}os-page os-lab-page{{ end }}
+
+{{ define "main" }}
+<div class="os-inner">
+    <header class="os-page-header reveal-item">
+        <span class="os-kicker">~/LAB</span>
+        <h1>Ideas you can touch<span>_</span></h1>
+        <p>把抽象概念做成可以调参数、看反馈、形成直觉的小实验。</p>
+    </header>
+
+    <section class="lab-experiment reveal-item" data-attention-lab>
+        <header><div><span class="os-kicker">EXPERIMENT 001</span><h2>Attention, by hand</h2></div><span class="lab-badge">INTERACTIVE</span></header>
+        <p class="lab-intro">移动 Query 与三个 Key 的数值。实验会计算点积，再经过 softmax 得到注意力权重。</p>
+
+        <div class="attention-workbench">
+            <div class="attention-controls">
+                <div class="attention-row attention-row--query"><label for="query-value"><b>Query</b><span>I</span></label><input id="query-value" data-attention-query type="range" min="-2" max="2" value="1" step="0.1"><output>1.0</output></div>
+                <div class="attention-row"><label for="key-love"><b>Key 01</b><span>love</span></label><input id="key-love" data-attention-key type="range" min="-2" max="2" value="1.5" step="0.1"><output>1.5</output></div>
+                <div class="attention-row"><label for="key-machine"><b>Key 02</b><span>machine</span></label><input id="key-machine" data-attention-key type="range" min="-2" max="2" value="0.3" step="0.1"><output>0.3</output></div>
+                <div class="attention-row"><label for="key-learning"><b>Key 03</b><span>learning</span></label><input id="key-learning" data-attention-key type="range" min="-2" max="2" value="0.6" step="0.1"><output>0.6</output></div>
+            </div>
+            <div class="attention-result">
+                <div class="attention-formula"><span>softmax(Q · K)</span><strong data-attention-formula>softmax([1.50, 0.30, 0.60])</strong></div>
+                <div class="attention-bars">
+                    <div><label>love <output data-weight>0.59</output></label><span><i data-bar style="width:59%"></i></span></div>
+                    <div><label>machine <output data-weight>0.18</output></label><span><i data-bar style="width:18%"></i></span></div>
+                    <div><label>learning <output data-weight>0.23</output></label><span><i data-bar style="width:23%"></i></span></div>
+                </div>
+                <p data-attention-insight>当前 Query 与 “love” 的点积最高，因此获得最多注意力。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="lab-roadmap reveal-item">
+        <span class="os-kicker">NEXT EXPERIMENTS</span>
+        <div><article><span>002</span><h3>KV Cache</h3><p>观察序列长度、缓存占用和生成延迟之间的关系。</p><small>PLANNED</small></article><article><span>003</span><h3>RAG Pipeline</h3><p>调节 chunk、召回数量和阈值，比较答案证据。</p><small>PLANNED</small></article><article><span>004</span><h3>Agent Loop</h3><p>逐步查看 observe、plan、act、reflect 状态变化。</p><small>PLANNED</small></article></div>
+    </section>
+</div>
+{{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}{{ end }}

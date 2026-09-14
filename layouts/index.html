@@ -1,0 +1,143 @@
+{{ define "body-class" }}home-page{{ end }}
+
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "eq" "posts" }}
+{{ $visiblePosts := where $posts "Params.hidden" "!=" true }}
+{{ $latest := first 5 $visiblePosts }}
+
+<div class="os-home" data-os-home>
+    <section class="os-hero" aria-labelledby="hero-title">
+        <div class="os-hero__grid" aria-hidden="true"></div>
+        <div class="os-hero__glow" aria-hidden="true"></div>
+
+        <div class="os-status reveal-item">
+            <span><i></i> AVAILABLE FOR IDEAS</span>
+            <span>RESEARCH OS / V1.0</span>
+        </div>
+
+        <div class="os-hero__content">
+            <p class="os-kicker reveal-item">SERRINI / AI ENGINEER</p>
+            <h1 id="hero-title" class="reveal-item">I build<br><span data-rotating-word>LLM</span><b> systems.</b></h1>
+            <p class="os-hero__lead reveal-item">把模型、Agent 与底层系统连接成可解释、可验证、能真正运行的工程。</p>
+            <div class="os-hero__actions reveal-item">
+                <a class="os-button os-button--primary" href="{{ "projects/" | relLangURL }}">Explore work <span>↗</span></a>
+                <a class="os-button" href="{{ "research/" | relLangURL }}">Open research map <span>→</span></a>
+            </div>
+        </div>
+
+        <div class="os-orbit" aria-hidden="true">
+            <span class="os-orbit__ring os-orbit__ring--one"></span>
+            <span class="os-orbit__ring os-orbit__ring--two"></span>
+            <span class="os-orbit__core">YOU</span>
+            <span class="os-orbit__node os-orbit__node--llm">LLM</span>
+            <span class="os-orbit__node os-orbit__node--agent">AGENT</span>
+            <span class="os-orbit__node os-orbit__node--eda">EDA</span>
+        </div>
+
+        <div class="os-terminal reveal-item" data-terminal>
+            <div class="os-terminal__bar"><span></span><span></span><span></span><b>serrini@research-os</b></div>
+            <div class="os-terminal__body">
+                <div class="os-terminal__output" data-terminal-output aria-live="polite">Type <strong>help</strong> to explore, or use a shortcut.</div>
+                <form class="os-terminal__form" data-terminal-form autocomplete="off">
+                    <label for="os-command">serrini@research-os:~$</label>
+                    <input id="os-command" data-terminal-input type="text" inputmode="text" spellcheck="false" aria-label="输入导航命令" placeholder="help" />
+                    <button type="submit" aria-label="运行命令">↵</button>
+                </form>
+                <div class="os-terminal__shortcuts" aria-label="命令快捷方式">
+                    <button type="button" data-command="projects">projects</button>
+                    <button type="button" data-command="research">research</button>
+                    <button type="button" data-command="writing">writing</button>
+                    <button type="button" data-command="now">now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="os-metrics reveal-item" aria-label="网站概览">
+        <div><strong data-count="{{ len $visiblePosts }}">0</strong><span>Published notes</span></div>
+        <div><strong data-count="5">0</strong><span>Selected projects</span></div>
+        <div><strong data-count="4">0</strong><span>Research tracks</span></div>
+        <div><strong>∞</strong><span>Questions remaining</span></div>
+    </section>
+
+    <section class="os-section" id="projects">
+        <header class="os-section__header reveal-item">
+            <div><span class="os-kicker">01 / SELECTED WORK</span><h2>Systems, not screenshots.</h2></div>
+            <a href="{{ "projects/" | relLangURL }}">View all projects ↗</a>
+        </header>
+        <div class="os-projects">
+            <details class="os-project os-project--violet reveal-item" name="home-projects">
+                <summary>
+                    <span class="os-project__number">01</span>
+                    <div><small>MULTI-AGENT APPLICATION</small><h3>Hajimi Paper Reader</h3><p>把论文精读拆成可追踪、可批判、可追问的多 Agent 工作流。</p></div>
+                    <span class="os-project__toggle">+</span>
+                </summary>
+                <div class="os-project__details">
+                    <div class="os-architecture"><span>PDF</span><i>→</i><span>Planner</span><i>→</i><span>Agents</span><i>→</i><span>Report</span></div>
+                    <div class="os-project__footer"><div class="os-tags"><span>Python</span><span>Multi-Agent</span><span>Electron</span></div><a href="https://github.com/Serrini/hajimi-paper-reader" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+                </div>
+            </details>
+            <details class="os-project os-project--blue reveal-item" name="home-projects">
+                <summary>
+                    <span class="os-project__number">02</span>
+                    <div><small>KNOWLEDGE ENGINEERING</small><h3>openKBQA</h3><p>在关系数据库与知识图谱之间切换的自然语言学术问答。</p></div>
+                    <span class="os-project__toggle">+</span>
+                </summary>
+                <div class="os-project__details">
+                    <div class="os-architecture"><span>Question</span><i>→</i><span>SQL / Cypher</span><i>→</i><span>Answer</span></div>
+                    <div class="os-project__footer"><div class="os-tags"><span>FastAPI</span><span>DuckDB</span><span>Neo4j</span></div><a href="https://github.com/Serrini/openKBQA" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+                </div>
+            </details>
+            <details class="os-project os-project--orange reveal-item" name="home-projects">
+                <summary>
+                    <span class="os-project__number">03</span>
+                    <div><small>LLM × DATA MINING</small><h3>Data Mining with LLM</h3><p>比较传统关联规则算法与 LLM 参与日志挖掘的实验系统。</p></div>
+                    <span class="os-project__toggle">+</span>
+                </summary>
+                <div class="os-project__details">
+                    <div class="os-architecture"><span>HDFS</span><i>→</i><span>Templates</span><i>→</i><span>Rules</span></div>
+                    <div class="os-project__footer"><div class="os-tags"><span>Apriori</span><span>FP-Growth</span><span>LLM</span></div><a href="https://github.com/Serrini/Data_mining_with_LLM" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="os-section os-research-preview" id="research">
+        <header class="os-section__header reveal-item">
+            <div><span class="os-kicker">02 / RESEARCH MAP</span><h2>A connected field of work.</h2></div>
+            <a href="{{ "research/" | relLangURL }}">Explore the graph ↗</a>
+        </header>
+        <div class="os-track-grid">
+            <a class="os-track reveal-item" href="{{ "research/#agent" | relLangURL }}"><span>01</span><b>Agent Systems</b><small>Tool use · Memory · Multi-Agent</small><i>↗</i></a>
+            <a class="os-track reveal-item" href="{{ "research/#gui" | relLangURL }}"><span>02</span><b>GUI & Multimodal</b><small>Grounding · Perception · Action</small><i>↗</i></a>
+            <a class="os-track reveal-item" href="{{ "research/#systems" | relLangURL }}"><span>03</span><b>Systems</b><small>Concurrency · Protocols · Runtime</small><i>↗</i></a>
+            <a class="os-track reveal-item" href="{{ "research/#eda" | relLangURL }}"><span>04</span><b>AI × EDA</b><small>Netlist · Simulation · Automation</small><i>↗</i></a>
+        </div>
+    </section>
+
+    <section class="os-section" id="writing">
+        <header class="os-section__header reveal-item">
+            <div><span class="os-kicker">03 / LATEST WRITING</span><h2>Notes from the workbench.</h2></div>
+            <a href="{{ "posts/" | relLangURL }}">All writing ↗</a>
+        </header>
+        <div class="os-writing-list">
+            {{ range $index, $post := $latest }}
+            <a class="os-writing-item reveal-item" href="{{ $post.RelPermalink }}">
+                <span>{{ printf "%02d" (add $index 1) }}</span>
+                <div><small>{{ with $post.Params.tags }}{{ index . 0 }}{{ else }}NOTE{{ end }} · {{ $post.Date.Format "2006.01.02" }}</small><h3>{{ $post.Title }}</h3></div>
+                <i>↗</i>
+            </a>
+            {{ end }}
+        </div>
+    </section>
+
+    <section class="os-lab-callout reveal-item">
+        <div><span class="os-kicker">04 / PROJECT PLAYGROUND</span><h2>Read it.<br><em>Then play with it.</em></h2></div>
+        <div><p>技术文章不只应该被阅读，也应该能够被操作。Lab 从一个可调节的 Attention 实验开始。</p><a class="os-button os-button--light" href="{{ "lab/" | relLangURL }}">Enter the lab ↗</a></div>
+    </section>
+
+    <footer class="os-footer"><span>SERRINI / RESEARCH OS</span><span>MODELS → SYSTEMS → IMPACT</span></footer>
+</div>
+{{ end }}
+
+{{ define "right-sidebar" }}{{ end }}

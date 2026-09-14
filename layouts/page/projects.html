@@ -1,0 +1,54 @@
+{{ define "body-class" }}os-page os-project-page{{ end }}
+
+{{ define "main" }}
+<div class="os-inner">
+    <header class="os-page-header reveal-item">
+        <span class="os-kicker">~/PROJECTS</span>
+        <h1>Selected systems<span>_</span></h1>
+        <p>不是技术名词的列表，而是问题、方法、系统边界与当前完成度。</p>
+    </header>
+
+    <section class="case-grid">
+        <article class="case-card case-card--violet reveal-item" id="hajimi-paper-reader">
+            <div class="case-card__meta"><span>01 / AI APPLICATION</span><span>WORKING PROTOTYPE</span></div>
+            <h2>Hajimi Paper Reader</h2>
+            <p class="case-card__lead">面向长篇论文的结构化多 Agent 精读桌面应用。</p>
+            <div class="case-flow" aria-label="项目架构"><span>PDF</span><i>→</i><span>Supervisor</span><i>→</i><span>Specialists</span><i>→</i><span>Report</span></div>
+            <dl><div><dt>Problem</dt><dd>阅读过程分散在 PDF、笔记和问答工具之间，普通摘要难以保留结构、方法与批判性分析。</dd></div><div><dt>Build</dt><dd>Supervisor 编排 planner、extractor、analyzer、critic 和 summarizer，并支持完成后的连续追问。</dd></div></dl>
+            <footer><div class="os-tags"><span>Python</span><span>Multi-Agent</span><span>Electron</span></div><a href="https://github.com/Serrini/hajimi-paper-reader" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+        </article>
+
+        <article class="case-card case-card--blue reveal-item" id="openkbqa">
+            <div class="case-card__meta"><span>02 / KNOWLEDGE ENGINEERING</span><span>RESEARCH PROTOTYPE</span></div>
+            <h2>openKBQA</h2>
+            <p class="case-card__lead">在 DuckDB 与 Neo4j 之间切换的自然语言学术知识问答。</p>
+            <div class="case-flow" aria-label="项目架构"><span>Question</span><i>→</i><span>SQL / Cypher</span><i>→</i><span>Evidence</span><i>→</i><span>Answer</span></div>
+            <dl><div><dt>Problem</dt><dd>纯关键词检索很难回答论文、作者与期刊之间的组合关系问题。</dd></div><div><dt>Build</dt><dd>统一数据库抽象层让 LLM 生成 SQL 或 Cypher，执行后形成带数据溯源的答案。</dd></div></dl>
+            <footer><div class="os-tags"><span>FastAPI</span><span>DuckDB</span><span>Neo4j</span><span>Streamlit</span></div><a href="https://github.com/Serrini/openKBQA" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+        </article>
+
+        <article class="case-card case-card--orange reveal-item" id="data-mining-with-llm">
+            <div class="case-card__meta"><span>03 / EXPERIMENT</span><span>COMPARATIVE STUDY</span></div>
+            <h2>Data Mining with LLM</h2>
+            <p class="case-card__lead">比较传统关联规则算法与 LLM 参与 HDFS 日志挖掘的完整实验。</p>
+            <div class="case-flow" aria-label="项目架构"><span>Logs</span><i>→</i><span>Templates</span><i>→</i><span>Mining</span><i>→</i><span>Evaluation</span></div>
+            <dl><div><dt>Problem</dt><dd>需要判断 LLM 参与数据认知、预处理和规则构建后，能否真正补充传统算法。</dd></div><div><dt>Build</dt><dd>统一比较 Apriori、事务压缩、FP-Growth 与 LLM 规则挖掘，并保留可复现实验结果。</dd></div></dl>
+            <footer><div class="os-tags"><span>Python</span><span>Apriori</span><span>FP-Growth</span><span>LLM</span></div><a href="https://github.com/Serrini/Data_mining_with_LLM" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+        </article>
+
+        <article class="case-card case-card--ink reveal-item" id="go-exercise-workspace">
+            <div class="case-card__meta"><span>04 / SYSTEMS PRACTICE</span><span>ENGINEERING NOTES</span></div>
+            <h2>Go Exercise Workspace</h2>
+            <p class="case-card__lead">围绕并发、接口和网络机制构建的一组独立可运行实验。</p>
+            <div class="case-flow" aria-label="项目内容"><span>Goroutine</span><i>+</i><span>Channel</span><i>+</i><span>Atomic</span><i>+</i><span>Network</span></div>
+            <dl><div><dt>Problem</dt><dd>运行时行为很难只靠概念掌握，需要能改参数、观察结果的最小实验。</dd></div><div><dt>Build</dt><dd>按机制拆分样例，覆盖 pipeline、runner、爬虫、FTP、netcat 和时钟等主题。</dd></div></dl>
+            <footer><div class="os-tags"><span>Go</span><span>Concurrency</span><span>Networking</span></div><a href="https://github.com/Serrini/go-exercise-workspace" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+        </article>
+    </section>
+
+    <section class="os-direction reveal-item"><span class="os-kicker">CURRENT DIRECTION</span><h2>LLM × EDA workflows</h2><p>正在探索电路生成、网表处理、仿真验证与自动优化之间的可靠闭环。这里保持诚实：仍在推进中的方向会明确标注为进行中。</p></section>
+</div>
+{{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}{{ end }}

@@ -1,6 +1,6 @@
 baseURL = "https://serrini.github.io/"
 languageCode = "zh-cn"
-title = "Serrini's Blog"
+title = "SERRINI — AI Engineer"
 theme = "hugo-theme-stack"
 
 DefaultContentLanguage = "zh-cn"
@@ -19,6 +19,7 @@ enableEmoji = true
   mainSections = ["posts"]
   featuredImageField = "image"
   rssFullContent = true
+  description = "SERRINI 的 Research OS：记录 LLM、Agent、EDA 自动化与系统工程。"
 
   [params.footer]
     since = 2020
@@ -29,7 +30,7 @@ enableEmoji = true
 
   [params.sidebar]
     emoji = ""
-    subtitle = "Goals determine what you going to be!"
+    subtitle = "AI Engineer · Agent · Systems · EDA"
     [params.sidebar.avatar]
       enabled = true
       local = true
@@ -74,6 +75,49 @@ enableEmoji = true
       enabled = true
 
 [menu]
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects/"
+    weight = 10
+    [menu.main.params]
+      icon = "home"
+  [[menu.main]]
+    identifier = "research"
+    name = "Research"
+    url = "/research/"
+    weight = 20
+    [menu.main.params]
+      icon = "categories"
+  [[menu.main]]
+    identifier = "writing"
+    name = "Writing"
+    url = "/posts/"
+    weight = 30
+    [menu.main.params]
+      icon = "archives"
+  [[menu.main]]
+    identifier = "lab"
+    name = "Lab"
+    url = "/lab/"
+    weight = 40
+    [menu.main.params]
+      icon = "tag"
+  [[menu.main]]
+    identifier = "now"
+    name = "Now"
+    url = "/now/"
+    weight = 50
+    [menu.main.params]
+      icon = "clock"
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 60
+    [menu.main.params]
+      icon = "user"
+
   [[menu.social]]
     identifier = "github"
     name = "GitHub"

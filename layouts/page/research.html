@@ -1,0 +1,48 @@
+{{ define "body-class" }}os-page os-research-page{{ end }}
+
+{{ define "main" }}
+<div class="os-inner">
+    <header class="os-page-header reveal-item">
+        <span class="os-kicker">~/RESEARCH</span>
+        <h1>Knowledge is a graph<span>_</span></h1>
+        <p>方向不是彼此隔离的标签。选择一个节点，看看它如何连接到项目、论文与工程问题。</p>
+    </header>
+
+    <section class="knowledge-map reveal-item" data-knowledge-map>
+        <div class="knowledge-map__canvas" aria-label="研究知识图谱">
+            <svg viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M500 280 L255 125 M500 280 L760 125 M500 280 L235 430 M500 280 L760 435 M255 125 L95 275 M255 125 L400 65 M760 125 L900 265 M760 125 L610 55 M235 430 L80 480 M235 430 L410 505 M760 435 L915 475 M760 435 L585 510" />
+            </svg>
+            <button class="knowledge-node knowledge-node--core" style="--x:50%;--y:50%" data-topic="core"><b>YOU</b><span>Research OS</span></button>
+            <button class="knowledge-node" style="--x:25.5%;--y:22%" data-topic="agent"><b>Agent</b><span>Orchestration</span></button>
+            <button class="knowledge-node" style="--x:76%;--y:22%" data-topic="gui"><b>GUI</b><span>Multimodal</span></button>
+            <button class="knowledge-node" style="--x:23.5%;--y:77%" data-topic="systems"><b>Systems</b><span>Runtime</span></button>
+            <button class="knowledge-node" style="--x:76%;--y:78%" data-topic="eda"><b>EDA</b><span>Automation</span></button>
+            <button class="knowledge-node knowledge-node--small" style="--x:9.5%;--y:49%" data-topic="multiagent"><b>Multi-Agent</b></button>
+            <button class="knowledge-node knowledge-node--small" style="--x:40%;--y:11%" data-topic="tool"><b>Tool Use</b></button>
+            <button class="knowledge-node knowledge-node--small" style="--x:90%;--y:48%" data-topic="grounding"><b>Grounding</b></button>
+            <button class="knowledge-node knowledge-node--small" style="--x:61%;--y:10%" data-topic="vlm"><b>VLM</b></button>
+            <button class="knowledge-node knowledge-node--small" style="--x:8%;--y:86%" data-topic="protocol"><b>Protocols</b></button>
+            <button class="knowledge-node knowledge-node--small" style="--x:41%;--y:90%" data-topic="concurrency"><b>Concurrency</b></button>
+            <button class="knowledge-node knowledge-node--small" style="--x:91%;--y:85%" data-topic="simulation"><b>Simulation</b></button>
+            <button class="knowledge-node knowledge-node--small" style="--x:58.5%;--y:91%" data-topic="netlist"><b>Netlist</b></button>
+        </div>
+        <aside class="knowledge-map__detail" data-topic-detail aria-live="polite">
+            <span>SELECTED NODE</span>
+            <h2>Research OS</h2>
+            <p>从中心开始探索。Agent、GUI、Systems 与 EDA 不是四份独立清单，而是相互提供方法和约束的研究空间。</p>
+            <a href="#tracks">Browse all tracks ↓</a>
+        </aside>
+    </section>
+
+    <section class="research-tracks" id="tracks">
+        <article id="agent" class="research-track reveal-item"><span>01</span><div><h2>Agent Systems</h2><p>关注任务分解、工具调用、记忆、监督者编排，以及多 Agent 并发系统中的可观测性。</p><div class="os-tags"><span>Function Calling</span><span>LangGraph</span><span>Multi-Agent</span></div><a href="{{ "posts/多智能体架构multiagent/" | relLangURL }}">Read related notes ↗</a></div></article>
+        <article id="gui" class="research-track reveal-item"><span>02</span><div><h2>GUI & Multimodal</h2><p>研究模型如何理解屏幕、定位元素、规划操作，并在执行后重新观察与纠错。</p><div class="os-tags"><span>Grounding</span><span>VLM</span><span>Perception</span></div><a href="{{ "posts/guiagent/" | relLangURL }}">Read related notes ↗</a></div></article>
+        <article id="systems" class="research-track reveal-item"><span>03</span><div><h2>Systems Engineering</h2><p>把并发、流式传输、协议和运行时行为视为 AI 产品可靠性的组成部分。</p><div class="os-tags"><span>Go</span><span>Concurrency</span><span>TLS</span><span>SSE</span></div><a href="{{ "posts/基于-langgraph-的高并发-multi-agent-流式系统设计/" | relLangURL }}">Read related notes ↗</a></div></article>
+        <article id="eda" class="research-track reveal-item"><span>04</span><div><h2>AI × EDA</h2><p>探索模型参与电路生成、网表理解、仿真验证和优化时，如何建立可审计的工程闭环。</p><div class="os-tags"><span>Netlist</span><span>SPICE</span><span>Simulation</span><span>Optimization</span></div><a href="{{ "now/" | relLangURL }}">See current direction ↗</a></div></article>
+    </section>
+</div>
+{{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}{{ end }}
