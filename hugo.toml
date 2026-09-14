@@ -19,7 +19,7 @@ enableEmoji = true
   mainSections = ["posts"]
   featuredImageField = "image"
   rssFullContent = true
-  description = "SERRINI 的 Research OS：记录 LLM、Agent、EDA 自动化与系统工程。"
+  description = "SERRINI 的 Research OS：记录 LLM、Agent 与系统工程。"
 
   [params.footer]
     since = 2020
@@ -30,7 +30,7 @@ enableEmoji = true
 
   [params.sidebar]
     emoji = ""
-    subtitle = "AI Engineer · Agent · Systems · EDA"
+    subtitle = "AI Engineer · Agent · Systems"
     [params.sidebar.avatar]
       enabled = true
       local = true

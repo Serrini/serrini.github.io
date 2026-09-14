@@ -121,7 +121,7 @@ body { transition: background-color .35s ease, color .35s ease; }
 .os-orbit__node { width: 62px; height: 62px; border: 1px solid rgba(255,255,255,.16); color: #aaa8ba; background: rgba(16,16,24,.8); }
 .os-orbit__node--llm { top: 45px; left: 190px; }
 .os-orbit__node--agent { top: 210px; right: 23px; }
-.os-orbit__node--eda { bottom: 16px; left: 88px; }
+.os-orbit__node--tools { bottom: 16px; left: 88px; }
 @keyframes os-spin { to { transform: rotate(360deg); } }
 
 .os-terminal { position: absolute; z-index: 3; right: clamp(24px, 4vw, 48px); bottom: 34px; width: calc(100% - 64px); max-width: 720px; border: 1px solid rgba(157,142,255,.34); border-radius: 16px; overflow: hidden; background: rgba(18,18,28,.94); box-shadow: 0 24px 60px rgba(0,0,0,.34), 0 0 0 1px rgba(113,92,255,.08), 0 0 45px rgba(113,92,255,.12); backdrop-filter: blur(18px); }
