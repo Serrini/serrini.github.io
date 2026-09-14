@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang | default "zh-cn" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8faff">
+  <meta name="description" content="Serrini — AI systems, agents, multimodal reasoning, engineering notes and useful tools.">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="stylesheet" href="{{ "home.css" | relURL }}">
+  <title>SERRINI. — AI, Systems & Useful Tools</title>
+</head>
+<body>
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ $posts = sort $posts "Date" "desc" }}
+  {{ $latest := first 5 $posts }}
+  {{ $featured := first 3 $posts }}
+
+  <header class="topbar">
+    <div class="site-shell" style="display:flex;align-items:center;justify-content:space-between;width:min(1540px,calc(100% - 48px));">
+      <div style="display:flex;align-items:center;min-width:0;">
+        <a class="brand" href="{{ .Site.BaseURL }}" aria-label="Serrini home">SERRINI<i></i></a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#work">Work</a>
+          <a href="#writing">Writing</a>
+          <a href="#about">About</a>
+          <a href="{{ "page/archives/" | relURL }}">Notes</a>
+        </nav>
+      </div>
+      <div class="top-actions">
+        <span class="microcopy">Ideas today. A more open tomorrow.</span>
+        <a class="github-btn" href="https://github.com/Serrini" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.78 2.71 1.27 3.37.97.1-.75.4-1.27.74-1.56-2.57-.29-5.27-1.28-5.27-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.16 1.18A10.98 10.98 0 0 1 12 6.1c.98 0 1.96.13 2.88.39 2.19-1.49 3.15-1.18 3.15-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.28 5.69.42.36.79 1.07.79 2.16v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-shell">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Build · Research · Share</div>
+        <h1>AI, systems, and the craft of building <span class="accent">useful tools.</span></h1>
+        <p class="hero-lead">I build intelligent systems and write about how they work.</p>
+        <p class="hero-sub">I focus on AI agents, multimodal systems, engineering practice and the systems behind them — turning ideas into practical tools, and complex research into clear notes.</p>
+        <div class="chips" aria-label="Areas of focus">
+          <span class="chip"><b>⌁</b> AI Agents</span>
+          <span class="chip"><b>▣</b> Multimodal</span>
+          <span class="chip"><b>◇</b> Systems</span>
+          <span class="chip"><b>⌘</b> Engineering</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn primary" href="#work">View my work <span>→</span></a>
+          <a class="btn secondary" href="#writing">Read my writing <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Serrini visual identity">
+        <div class="poster">
+          <div class="poster-grid"></div>
+          <div class="poster-title">FROM<br>IDEAS<br>TO <span>USEFUL<br>TOOLS.</span></div>
+          <div class="poster-code" aria-hidden="true">
+            <div class="code-line"></div><div class="code-line"></div><div class="code-line"></div><div class="code-line"></div>
+          </div>
+          <div class="poster-foot"><span>SERRINI.</span><span>AI × SYSTEMS × RESEARCH</span></div>
+        </div>
+        <div class="visual-stack">
+          <div class="mini-panel dark">
+            <div><h3>Intelligent Systems</h3><p>Build systems that can reason, use tools and act.</p></div>
+            <strong>→</strong>
+          </div>
+          <div class="mini-panel">
+            <div><h3>Multimodal</h3><p>Understand richer information across interfaces and media.</p></div>
+            <div style="display:flex;gap:7px"><span class="focus-icon" style="width:30px;height:30px;margin:0">▧</span><span class="focus-icon" style="width:30px;height:30px;margin:0">≋</span><span class="focus-icon" style="width:30px;height:30px;margin:0">◫</span></div>
+          </div>
+          <div class="mini-panel blue">
+            <div><h3>Agents</h3><p>Plan · Reason · Use tools · Achieve.</p></div>
+            <div class="spark" aria-hidden="true"><svg viewBox="0 0 180 52" preserveAspectRatio="none"><path d="M0 40 C30 35 42 42 66 31 S106 35 126 17 S154 10 180 4" fill="none" stroke="white" stroke-width="2"/><circle cx="126" cy="17" r="3" fill="white"/><circle cx="180" cy="4" r="3" fill="white"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-head">
+        <h2 class="section-kicker">Featured Work</h2>
+        <a href="{{ "page/archives/" | relURL }}">View all work →</a>
+      </div>
+      <div class="featured-grid">
+        {{ range first 1 $featured }}
+        <a class="featured-primary" href="{{ .RelPermalink }}">
+          <div>
+            <span class="pill">Featured</span>
+            <h3>{{ .Title }}</h3>
+            <p>{{ .Summary | plainify | truncate 190 }}</p>
+          </div>
+          <span class="readmore">Read more →</span>
+        </a>
+        {{ end }}
+        <div class="featured-side">
+          {{ range after 1 $featured }}
+          <a class="article-card" href="{{ .RelPermalink }}">
+            <div>
+              <span class="article-num">0{{ add 1 .Weight }}</span>
+              <h3>{{ .Title }}</h3>
+              <p>{{ .Summary | plainify | truncate 105 }}</p>
+            </div>
+            <span class="article-meta">{{ .Date.Format "2006-01-02" }} · Read more →</span>
+          </a>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2 class="section-kicker">Current Focus</h2><a href="#writing">Explore more →</a></div>
+      <div class="focus-grid">
+        <div class="focus-card"><div class="focus-icon">⌁</div><h3>AI Agents</h3><p>Agent architectures, tool use, workflows and reliable execution loops.</p></div>
+        <div class="focus-card"><div class="focus-icon">▣</div><h3>Multimodal Reasoning</h3><p>Vision-language systems, GUI understanding and richer interaction signals.</p></div>
+        <div class="focus-card"><div class="focus-icon">◇</div><h3>Agent Infrastructure</h3><p>Scalable orchestration, evaluation, retrieval and engineering foundations.</p></div>
+        <div class="focus-card"><div class="focus-icon">↗</div><h3>Systems Thinking</h3><p>Understanding complex systems from architecture to implementation details.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="writing">
+      <div class="section-head"><h2 class="section-kicker">Latest Writing</h2><a href="{{ "page/archives/" | relURL }}">View all →</a></div>
+      <div class="writing-grid">
+        {{ range $latest }}
+        <a class="writing-card" href="{{ .RelPermalink }}">
+          <span class="writing-date">{{ .Date.Format "2006-01-02" }}</span>
+          <h3>{{ .Title }}</h3>
+          {{ with .Params.tags }}<span class="tag">{{ index . 0 }}</span>{{ else }}<span class="tag">Notes</span>{{ end }}
+        </a>
+        {{ end }}
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-head"><h2 class="section-kicker">About Serrini.</h2></div>
+      <div class="about">
+        <div class="about-main">
+          {{ with resources.Get "images/avatar.jpg" }}<img class="avatar" src="{{ .RelPermalink }}" alt="Serrini avatar">{{ end }}
+          <div>
+            <h3>SERRINI.</h3>
+            <p>I build intelligent systems and write about how they work. My notes span AI agents, multimodal systems, systems engineering and practical development. I enjoy turning complicated ideas into clear explanations and useful tools.</p>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>2020 — {{ now.Year }}</strong><span>Building · Learning · Sharing</span></div>
+          <div class="stat"><strong>{{ len $posts }}</strong><span>Notes & articles</span></div>
+          <div class="stat"><strong>AI × Systems</strong><span>My north star</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-shell footer">
+    <div><strong style="color:#11182a">SERRINI.</strong> &nbsp; Ideas into tools. Knowledge into a more open world.</div>
+    <div class="footer-links"><a href="https://github.com/Serrini" target="_blank" rel="noopener">GitHub</a><a href="{{ "index.xml" | relURL }}">RSS</a><span>© 2020 — {{ now.Year }} SERRINI.</span></div>
+  </footer>
+</body>
+</html>
