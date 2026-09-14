@@ -33,7 +33,7 @@
             }, { passive: true });
         }
         if (!word || reduceMotion) return;
-        const words = ["LLM", "Agent", "System", "Research", "Engineering"];
+        const words = ["LLM", "Agent", "System", "Research", "Tools"];
         let index = 0;
         window.setInterval(() => {
             word.classList.add("is-changing");

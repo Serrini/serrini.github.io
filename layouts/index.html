@@ -10,62 +10,66 @@
         <div class="os-hero__grid" aria-hidden="true"></div>
         <div class="os-hero__glow" aria-hidden="true"></div>
 
-        <div class="os-status reveal-item">
-            <span><i></i> AVAILABLE FOR IDEAS</span>
-            <span>RESEARCH OS / V1.0</span>
-        </div>
+        <header class="os-topbar reveal-item">
+            <a class="os-topbar__brand" href="{{ "" | relLangURL }}"><strong>SERRINI.OS</strong><span>PERSONAL RESEARCH SYSTEM</span></a>
+            <nav aria-label="首页导航">
+                <a href="{{ "projects/" | relLangURL }}">Projects</a>
+                <a href="{{ "research/" | relLangURL }}">Research</a>
+                <a href="{{ "posts/" | relLangURL }}">Writing</a>
+                <a href="{{ "lab/" | relLangURL }}">Lab</a>
+            </nav>
+            <div class="os-topbar__actions"><span><i></i> ONLINE</span><button id="dark-mode-toggle" type="button" aria-label="切换明暗模式">◐ <b>THEME</b></button></div>
+        </header>
 
-        <div class="os-hero__content">
-            <p class="os-kicker reveal-item">SERRINI / AI ENGINEER</p>
-            <h1 id="hero-title" class="reveal-item">I build<br><span data-rotating-word>LLM</span><b> systems.</b></h1>
-            <p class="os-hero__lead reveal-item">把模型、Agent 与底层系统连接成可解释、可验证、能真正运行的工程。</p>
-            <div class="os-hero__actions reveal-item">
-                <a class="os-button os-button--primary" href="{{ "projects/" | relLangURL }}">Explore work <span>↗</span></a>
-                <a class="os-button" href="{{ "research/" | relLangURL }}">Open research map <span>→</span></a>
+        <div class="os-hero__workspace">
+            <div class="os-hero__content">
+                <p class="os-kicker reveal-item">AI ENGINEER / RESEARCHER</p>
+                <h1 id="hero-title" class="reveal-item">I build<br><span data-rotating-word>LLM</span><br><b>systems.</b></h1>
+                <p class="os-hero__lead reveal-item">把模型、Agent 与底层系统连接成可解释、可验证、能真正运行的工程。</p>
+                <div class="os-hero__actions reveal-item">
+                    <a class="os-button os-button--primary" href="{{ "projects/" | relLangURL }}">Explore work <span>↗</span></a>
+                    <a class="os-button" href="{{ "research/" | relLangURL }}">Open research map <span>→</span></a>
+                </div>
+                <div class="os-hero__path reveal-item"><span>~/focus</span><b>models → agents → reliable systems</b></div>
+            </div>
+
+            <div class="os-terminal reveal-item" data-terminal>
+                <div class="os-terminal__bar"><span></span><span></span><span></span><b>COMMAND CENTER / serrini@research-os</b><em>ONLINE</em></div>
+                <div class="os-terminal__body">
+                    <div class="os-terminal__intro">
+                        <div><span>用命令探索本站</span><small>支持直接命令、<code>open ~/路径</code> 和中文</small></div>
+                        <button type="button" data-command="help">查看帮助</button>
+                    </div>
+                    <div class="os-terminal__shortcuts" aria-label="可执行命令">
+                        <button type="button" data-command="projects"><code>projects</code><span>项目</span></button>
+                        <button type="button" data-command="research"><code>research</code><span>研究</span></button>
+                        <button type="button" data-command="writing"><code>writing</code><span>文章</span></button>
+                        <button type="button" data-command="lab"><code>lab</code><span>实验室</span></button>
+                        <button type="button" data-command="now"><code>now</code><span>近况</span></button>
+                        <button type="button" data-command="about"><code>about</code><span>关于</span></button>
+                    </div>
+                    <div class="os-terminal__output" data-terminal-output aria-live="polite"><span>提示</span> 试试输入 <strong>open ~/lab</strong>，可直接进入实验室。</div>
+                    <form class="os-terminal__form" data-terminal-form autocomplete="off">
+                        <label for="os-command">serrini@research-os:~$</label>
+                        <input id="os-command" data-terminal-input type="text" inputmode="text" spellcheck="false" aria-label="输入导航命令" placeholder="例如：open ~/lab、项目、help" />
+                        <button type="submit" aria-label="运行命令">↵</button>
+                    </form>
+                </div>
             </div>
         </div>
 
-        <div class="os-orbit" aria-hidden="true">
-            <span class="os-orbit__ring os-orbit__ring--one"></span>
-            <span class="os-orbit__ring os-orbit__ring--two"></span>
-            <span class="os-orbit__core">YOU</span>
-            <span class="os-orbit__node os-orbit__node--llm">LLM</span>
-            <span class="os-orbit__node os-orbit__node--agent">AGENT</span>
-            <span class="os-orbit__node os-orbit__node--tools">TOOLS</span>
-        </div>
-
-        <div class="os-terminal reveal-item" data-terminal>
-            <div class="os-terminal__bar"><span></span><span></span><span></span><b>COMMAND CENTER / serrini@research-os</b><em>ONLINE</em></div>
-            <div class="os-terminal__body">
-                <div class="os-terminal__intro">
-                    <div><span>用命令探索本站</span><small>支持直接命令、<code>open ~/路径</code> 和中文</small></div>
-                    <button type="button" data-command="help">查看帮助</button>
-                </div>
-                <div class="os-terminal__shortcuts" aria-label="可执行命令">
-                    <button type="button" data-command="projects"><code>projects</code><span>项目</span></button>
-                    <button type="button" data-command="research"><code>research</code><span>研究</span></button>
-                    <button type="button" data-command="writing"><code>writing</code><span>文章</span></button>
-                    <button type="button" data-command="lab"><code>lab</code><span>实验室</span></button>
-                    <button type="button" data-command="now"><code>now</code><span>近况</span></button>
-                    <button type="button" data-command="about"><code>about</code><span>关于</span></button>
-                </div>
-                <div class="os-terminal__output" data-terminal-output aria-live="polite"><span>提示</span> 试试输入 <strong>open ~/lab</strong>，可直接进入实验室。</div>
-                <form class="os-terminal__form" data-terminal-form autocomplete="off">
-                    <label for="os-command">serrini@research-os:~$</label>
-                    <input id="os-command" data-terminal-input type="text" inputmode="text" spellcheck="false" aria-label="输入导航命令" placeholder="例如：open ~/lab、项目、help" />
-                    <button type="submit" aria-label="运行命令">↵</button>
-                </form>
+        <footer class="os-hero__footer reveal-item">
+            <div class="os-metrics" aria-label="网站概览">
+                <div><strong data-count="{{ len $visiblePosts }}">0</strong><span>Published notes</span></div>
+                <div><strong data-count="5">0</strong><span>Selected projects</span></div>
+                <div><strong data-count="4">0</strong><span>Research tracks</span></div>
+                <div><strong>∞</strong><span>Questions remaining</span></div>
             </div>
-        </div>
+            <a class="os-scroll-cue" href="#projects"><span>SCROLL TO EXPLORE</span><i>↓</i></a>
+        </footer>
     </section>
 
-    <section class="os-metrics reveal-item" aria-label="网站概览">
-        <div><strong data-count="{{ len $visiblePosts }}">0</strong><span>Published notes</span></div>
-        <div><strong data-count="5">0</strong><span>Selected projects</span></div>
-        <div><strong data-count="4">0</strong><span>Research tracks</span></div>
-        <div><strong>∞</strong><span>Questions remaining</span></div>
-    </section>
-
+    <div class="os-home__content">
     <section class="os-section" id="projects">
         <header class="os-section__header reveal-item">
             <div><span class="os-kicker">01 / SELECTED WORK</span><h2>Systems, not screenshots.</h2></div>
@@ -143,7 +147,9 @@
     </section>
 
     <footer class="os-footer"><span>SERRINI / RESEARCH OS</span><span>MODELS → SYSTEMS → IMPACT</span></footer>
+    </div>
 </div>
 {{ end }}
 
+{{ define "left-sidebar" }}<template data-home-owned-navigation></template>{{ end }}
 {{ define "right-sidebar" }}{{ end }}
