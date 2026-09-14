@@ -61,7 +61,7 @@
         <footer class="os-hero__footer reveal-item">
             <div class="os-metrics" aria-label="网站概览">
                 <div><strong data-count="{{ len $visiblePosts }}">0</strong><span>Published notes</span></div>
-                <div><strong data-count="5">0</strong><span>Selected projects</span></div>
+                <div><strong data-count="4">0</strong><span>Selected projects</span></div>
                 <div><strong data-count="4">0</strong><span>Research tracks</span></div>
                 <div><strong>∞</strong><span>Questions remaining</span></div>
             </div>
@@ -75,40 +75,39 @@
             <div><span class="os-kicker">01 / SELECTED WORK</span><h2>Systems, not screenshots.</h2></div>
             <a href="{{ "projects/" | relLangURL }}">View all projects ↗</a>
         </header>
-        <div class="os-projects">
-            <details class="os-project os-project--violet reveal-item" name="home-projects">
-                <summary>
-                    <span class="os-project__number">01</span>
-                    <div><small>MULTI-AGENT APPLICATION</small><h3>Hajimi Paper Reader</h3><p>把论文精读拆成可追踪、可批判、可追问的多 Agent 工作流。</p></div>
-                    <span class="os-project__toggle">+</span>
-                </summary>
-                <div class="os-project__details">
-                    <div class="os-architecture"><span>PDF</span><i>→</i><span>Planner</span><i>→</i><span>Agents</span><i>→</i><span>Report</span></div>
-                    <div class="os-project__footer"><div class="os-tags"><span>Python</span><span>Multi-Agent</span><span>Electron</span></div><a href="https://github.com/Serrini/hajimi-paper-reader" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
-                </div>
-            </details>
-            <details class="os-project os-project--blue reveal-item" name="home-projects">
-                <summary>
-                    <span class="os-project__number">02</span>
-                    <div><small>KNOWLEDGE ENGINEERING</small><h3>openKBQA</h3><p>在关系数据库与知识图谱之间切换的自然语言学术问答。</p></div>
-                    <span class="os-project__toggle">+</span>
-                </summary>
-                <div class="os-project__details">
-                    <div class="os-architecture"><span>Question</span><i>→</i><span>SQL / Cypher</span><i>→</i><span>Answer</span></div>
-                    <div class="os-project__footer"><div class="os-tags"><span>FastAPI</span><span>DuckDB</span><span>Neo4j</span></div><a href="https://github.com/Serrini/openKBQA" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
-                </div>
-            </details>
-            <details class="os-project os-project--orange reveal-item" name="home-projects">
-                <summary>
-                    <span class="os-project__number">03</span>
-                    <div><small>LLM × DATA MINING</small><h3>Data Mining with LLM</h3><p>比较传统关联规则算法与 LLM 参与日志挖掘的实验系统。</p></div>
-                    <span class="os-project__toggle">+</span>
-                </summary>
-                <div class="os-project__details">
-                    <div class="os-architecture"><span>HDFS</span><i>→</i><span>Templates</span><i>→</i><span>Rules</span></div>
-                    <div class="os-project__footer"><div class="os-tags"><span>Apriori</span><span>FP-Growth</span><span>LLM</span></div><a href="https://github.com/Serrini/Data_mining_with_LLM" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
-                </div>
-            </details>
+        <div class="case-grid home-case-grid">
+            <article class="case-card case-card--violet reveal-item" id="hajimi-paper-reader">
+                <div class="case-card__meta"><span>01 / AI APPLICATION</span><span>WORKING PROTOTYPE</span></div>
+                <h3>Hajimi Paper Reader</h3>
+                <p class="case-card__lead">面向长篇论文的结构化多 Agent 精读桌面应用。</p>
+                <div class="case-flow" aria-label="项目架构"><span>PDF</span><i>→</i><span>Supervisor</span><i>→</i><span>Specialists</span><i>→</i><span>Report</span></div>
+                <dl><div><dt>Build</dt><dd>Supervisor 编排 planner、extractor、analyzer、critic 和 summarizer，并支持连续追问。</dd></div></dl>
+                <footer><div class="os-tags"><span>Python</span><span>Multi-Agent</span><span>Electron</span></div><a href="https://github.com/Serrini/hajimi-paper-reader" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+            </article>
+            <article class="case-card case-card--blue reveal-item" id="openkbqa">
+                <div class="case-card__meta"><span>02 / KNOWLEDGE ENGINEERING</span><span>RESEARCH PROTOTYPE</span></div>
+                <h3>openKBQA</h3>
+                <p class="case-card__lead">在 DuckDB 与 Neo4j 之间切换的自然语言学术知识问答。</p>
+                <div class="case-flow" aria-label="项目架构"><span>Question</span><i>→</i><span>SQL / Cypher</span><i>→</i><span>Evidence</span><i>→</i><span>Answer</span></div>
+                <dl><div><dt>Build</dt><dd>统一数据库抽象层让 LLM 生成 SQL 或 Cypher，执行后形成带数据溯源的答案。</dd></div></dl>
+                <footer><div class="os-tags"><span>FastAPI</span><span>DuckDB</span><span>Neo4j</span></div><a href="https://github.com/Serrini/openKBQA" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+            </article>
+            <article class="case-card case-card--orange reveal-item" id="data-mining-with-llm">
+                <div class="case-card__meta"><span>03 / EXPERIMENT</span><span>COMPARATIVE STUDY</span></div>
+                <h3>Data Mining with LLM</h3>
+                <p class="case-card__lead">比较传统关联规则算法与 LLM 参与 HDFS 日志挖掘的完整实验。</p>
+                <div class="case-flow" aria-label="项目架构"><span>Logs</span><i>→</i><span>Templates</span><i>→</i><span>Mining</span><i>→</i><span>Evaluation</span></div>
+                <dl><div><dt>Build</dt><dd>统一比较 Apriori、事务压缩、FP-Growth 与 LLM 规则挖掘，并保留可复现实验结果。</dd></div></dl>
+                <footer><div class="os-tags"><span>Python</span><span>Apriori</span><span>FP-Growth</span><span>LLM</span></div><a href="https://github.com/Serrini/Data_mining_with_LLM" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+            </article>
+            <article class="case-card case-card--ink reveal-item" id="go-exercise-workspace">
+                <div class="case-card__meta"><span>04 / SYSTEMS PRACTICE</span><span>ENGINEERING NOTES</span></div>
+                <h3>Go Exercise Workspace</h3>
+                <p class="case-card__lead">围绕并发、接口和网络机制构建的一组独立可运行实验。</p>
+                <div class="case-flow" aria-label="项目内容"><span>Goroutine</span><i>+</i><span>Channel</span><i>+</i><span>Atomic</span><i>+</i><span>Network</span></div>
+                <dl><div><dt>Build</dt><dd>按机制拆分样例，覆盖 pipeline、runner、爬虫、FTP、netcat 和时钟等主题。</dd></div></dl>
+                <footer><div class="os-tags"><span>Go</span><span>Concurrency</span><span>Networking</span></div><a href="https://github.com/Serrini/go-exercise-workspace" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+            </article>
         </div>
     </section>
 
